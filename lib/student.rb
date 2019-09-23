@@ -12,7 +12,7 @@ class Student
   def self.all
     sql = <<-SQL
       SELECT *
-      FROM students
+      FROM students;
     SQL
     DB[:conn].execute(sql).map do |row|
       self.new_from_db(row)
@@ -23,7 +23,7 @@ class Student
     sql = <<-SQL
       SELECT * 
       FROM students
-      WHERE grade = 9 
+      WHERE grade = 9; 
     SQL
     DB[:conn].execute(sql).map do |row|
       self.new_from_db(row)
@@ -34,7 +34,7 @@ class Student
     sql = <<-SQL
       SELECT * 
       FROM students
-      WHERE grade < 12 
+      WHERE grade < 12;
     SQL
     DB[:conn].execute(sql).map do |row|
       self.new_from_db(row)
@@ -50,7 +50,7 @@ class Student
       SELECT * 
       FROM students
       WHERE grade = 10 
-      LIMIT 1 
+      LIMIT 1; 
     SQL
     DB[:conn].execute(sql, name).map do |row|
       self.new_from_db(row)
@@ -65,7 +65,7 @@ class Student
     sql = <<-SQL
       SELECT *
       FROM students
-      WHERE name = ?
+      WHERE name = ?;
     SQL
     DB[:conn].execute(sql, name).map do |row|
       self.new_from_db(row)
@@ -75,7 +75,7 @@ class Student
   def save
     sql = <<-SQL
       INSERT INTO students (name, grade) 
-      VALUES (?, ?)
+      VALUES (?, ?);
     SQL
 
     DB[:conn].execute(sql, self.name, self.grade)
@@ -86,7 +86,7 @@ class Student
     CREATE TABLE IF NOT EXISTS students (
       id INTEGER PRIMARY KEY,
       name TEXT,
-      grade TEXT
+      grade TEXT;
     )
     SQL
 
@@ -94,7 +94,7 @@ class Student
   end
 
   def self.drop_table
-    sql = "DROP TABLE IF EXISTS students"
+    sql = "DROP TABLE IF EXISTS students;"
     DB[:conn].execute(sql)
   end
 end
