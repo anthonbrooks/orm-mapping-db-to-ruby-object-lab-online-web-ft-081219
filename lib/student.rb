@@ -66,8 +66,13 @@ class Student
     end.first
   end 
   
-  def self.all_students_in_grade_X
+  def self.all_students_in_grade_X(grade)
+    sql = <<-SQL
     
+    SQL
+    DB[:conn].execute(sql).map do |row|
+      
+    end
   end 
 
   def self.find_by_name(name)
