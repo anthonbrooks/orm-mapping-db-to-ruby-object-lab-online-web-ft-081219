@@ -21,7 +21,7 @@ class Student
       WHERE grade = 9 
     SQL
     DB[:conn].execute(sql)
-    end 
+  end 
 
   def self.find_by_name(name)
     sql = <<-SQL
